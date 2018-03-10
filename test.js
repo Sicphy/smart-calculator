@@ -10,7 +10,7 @@ describe('SmartCalculator', () => {
       .add(5)
       .add(5);
 
-    assert.equal(value, 11);
+    assert.equal(value, 11);a
   });
 
   it('2', () => {
