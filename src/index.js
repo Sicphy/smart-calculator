@@ -34,6 +34,8 @@ class SmartCalculator {
 
     pow(number) {
         // your implementation
+        var brackets = [];
+        var number2 = [];
         if(!this.array.length)
             this.array += "Math.pow(" + this.thisNumber.toString() + "," + number.toString() + ")";
         else {
@@ -56,17 +58,24 @@ class SmartCalculator {
 
                 tempNumber = ++i;
 
-                var temp2;
+                for(var i = tempNumber; temp[i] !== ')'; i++) {
+                    number2+=temp[i];
+                }
 
-                for (i; temp[i] != ')'; i++)
-                    temp2 += temp[i];
+                for(i; i < temp.length; i++) {
+                    brackets += temp[i];
+                }
 
-                
+                temp = temp.slice(0, tempNumber);
+
+                temp = temp + "Math.pow(" + number2 + "," + number.toString() + ")" + brackets;
+
+                this.array = this.array + temp;
+
             }
 
-
-
-            this.array += "Math.pow(" + temp + "," + number.toString() + ")";
+            else
+                this.array += "Math.pow(" + temp + "," + number.toString() + ")";
         }
 
         // this.thisNumber = Math.pow(this.thisNumber, number);
